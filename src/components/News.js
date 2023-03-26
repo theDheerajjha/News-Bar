@@ -43,7 +43,11 @@ const News = (props)=>{
         setPage(page+1) 
         let data = await fetch(url);
         let parsedData = await data.json()
-        setArticles(articles.concat(parsedData.articles))
+        if(parsedData.articles){
+          setArticles(articles.concat(parsedData.articles))
+        }else{
+            console.warn("check If there is any issue with API key")
+        }
         setTotalResults(parsedData.totalResults)
       };
  
